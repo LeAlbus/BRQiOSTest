@@ -4,7 +4,7 @@
  
 Olá **dev**, esse teste visa medir a capacidade do candidato a uma vaga para empresa BRQ na tecnologia iOS.
 
-Nosso teste consiste em pesquisar e apresentar o resultado da busca em uma lista e ao clicar em um filme, o app deve apresentar as informações do filme especifico, pesquisado pelo usuário do APP e alimentado pelo banco de dados do IMDB, via a API OMDB.
+Nosso teste consiste em pesquisar e apresentar o resultado da busca em uma lista e ao clicar em um filme, o app deve apresentar as informações do filme especifico, pesquisado pelo usuário do APP e alimentado pelo banco de dados do IMDB, via a API OMDB(http://www.omdbapi.com).
 
 O candidato pode apresentar o design do app da forma que quiser (não necessariamente precisando seguir o spec abaixo), porém o App deve conter os componentes que são específicos para atingir as metas.
 
