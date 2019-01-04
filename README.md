@@ -8,6 +8,8 @@ Nosso teste consiste em pesquisar e apresentar o resultado da busca em uma lista
 
 O candidato pode apresentar o design do app da forma que quiser (não necessariamente precisando seguir o spec abaixo), porém o App deve conter os componentes que são específicos para atingir as metas.
 
+## Não se esqueça de fazer clone do projeto e depois fazer um pull request.
+
 ### Metas:
 1. Consumir a API do OMDB
 2. Apresentar um UISEARCHBAR para pesquisa do filme
@@ -24,5 +26,3 @@ O candidato pode apresentar o design do app da forma que quiser (não necessaria
 4. Escrever Testes Unitarios
 5. Escrever Testes de Interface
 6. Escrever Camada de Conexão com a API
-
-Não se esqueça de fazer clone do projeto e depois fazer um pull request.
