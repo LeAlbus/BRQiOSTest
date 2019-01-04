@@ -24,3 +24,5 @@ O candidato pode apresentar o design do app da forma que quiser (não necessaria
 4. Escrever Testes Unitarios
 5. Escrever Testes de Interface
 6. Escrever Camada de Conexão com a API
+
+Não se esqueça de fazer clone do projeto e depois fazer um pull request.
