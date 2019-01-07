@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+struct Movie{
+    
+    let title: String
+    let gender: String
+    
+    init(newTitle: String, newGender: String) {
+        self.title = newTitle
+        self.gender = newGender
+    }
+}
