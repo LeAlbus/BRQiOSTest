@@ -23,7 +23,7 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    var currentList = [Movie]()
+    var currentList : [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +33,6 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         
         self.searchBar.delegate = self
         
-        self.currentList = [ Movie(newTitle: "movie Title A", newGender: "Horror"),
-                             Movie(newTitle: "movie Title B", newGender: "Action"),
-                             Movie(newTitle: "movie Title C", newGender: "Drama"),
-                             Movie(newTitle: "movie Title D", newGender: "Action"),
-                             Movie(newTitle: "movie Title E", newGender: "Drama"),
-                             Movie(newTitle: "movie Title F", newGender: "Horror"),
-                             Movie(newTitle: "movie Title G", newGender: "Horror"),
-                             Movie(newTitle: "movie Title H", newGender: "Drama"),
-                             Movie(newTitle: "movie Title I", newGender: "Romance"),
-                             Movie(newTitle: "movie Title J", newGender: "Action")]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +56,10 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTitleCell", for: indexPath)
 
         cell.textLabel?.text = self.currentList[indexPath.row].title
-        cell.detailTextLabel?.text = self.currentList[indexPath.row].gender
+        
+        let subLine = "\(self.currentList[indexPath.row].type) / \(self.currentList[indexPath.row].year)"
+        cell.detailTextLabel?.text = subLine
+        
         return cell
     }
     

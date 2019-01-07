@@ -13,17 +13,38 @@ class APITalker{
     
     static let sharedInstance = APITalker()
     
-    func requestMovieList(with title: String, successHandler: @escaping (_ successObject: [Movie]?) -> (), errorHandler: @escaping (_ error: NSError) -> ()){
+    func requestMovieList(with title: String, successHandler: @escaping (_ successObject: [Movie]?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
     
         
-        Alamofire.request("http://www.omdbapi.com/?apikey=250f96d0&s=The").responseJSON { response in
+        Alamofire.request("http://www.omdbapi.com/?apikey=250f96d0&s=Spider").responseJSON { response in
+           
             print (response)
-            
-            let aMovie = Movie(newTitle: "Abreu", newGender: "AGender")
-            let bMovie = Movie(newTitle: "Tadeu", newGender: "Another")
-            let cMovie = Movie(newTitle: "Jubileu", newGender: "Last")
-            
-            successHandler([aMovie, bMovie, cMovie])
+   
+            switch response.result {
+            case .success:
+                do{
+                    
+                    let data = response.data
+                    
+                    let responseList = try JSONDecoder().decode(DecodableSearchResult.self, from: data!)
+
+                    successHandler(responseList.movieList)
+                    
+                } catch let error{
+                    
+                    print ("Error while parsing response")
+                    print(error)
+                    
+                    successHandler(nil)
+                    errorHandler(error as NSError)
+                }
+            case .failure(_):
+                
+                print ("Failed to get movie list from url")
+                
+                successHandler(nil)
+                errorHandler(nil)
+            }
         }
         
     }
