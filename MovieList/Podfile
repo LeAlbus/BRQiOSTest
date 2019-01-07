@@ -7,15 +7,16 @@ target 'MovieList' do
 
   # Pods for MovieList
 
+  pod 'Alamofire', '~> 4.5'
+  pod 'AlamofireImage', '~> 3.3'
+  pod 'PureLayout', '~> 2.0.5'
+
   target 'MovieListTests' do
     inherit! :search_paths
-
-	pod 'PureLayout', '~> 2.0.5'
   end
 
   target 'MovieListUITests' do
     inherit! :search_paths
-
   end
 
 end

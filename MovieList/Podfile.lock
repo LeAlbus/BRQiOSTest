@@ -1,16 +1,25 @@
 PODS:
+  - Alamofire (4.8.0)
+  - AlamofireImage (3.5.0):
+    - Alamofire (~> 4.8)
   - PureLayout (2.0.6)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - AlamofireImage (~> 3.3)
   - PureLayout (~> 2.0.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
     - PureLayout
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
 
-PODFILE CHECKSUM: 5e7a368d199d1ab090b8e90a6f6982349c25cb75
+PODFILE CHECKSUM: e0d7f2daf5b3cdee6799a9eb10fa6e4b4b989375
 
 COCOAPODS: 1.5.3

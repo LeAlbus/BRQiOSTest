@@ -10,10 +10,18 @@ import Foundation
 //import PureLayout
 import UIKit
 
-class SearchScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class SearchScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultTableView: UITableView!
+    
+    let searchViewModel = MovieScreenVM()
+    
+    var searchedTitle: String = "" {
+        didSet{
+            searchViewModel.searchMovies(with: searchedTitle)
+        }
+    }
     
     var currentList = [Movie]()
     
@@ -22,6 +30,8 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         
         self.resultTableView.delegate = self
         self.resultTableView.dataSource = self
+        
+        self.searchBar.delegate = self
         
         self.currentList = [ Movie(newTitle: "movie Title A", newGender: "Horror"),
                              Movie(newTitle: "movie Title B", newGender: "Action"),
@@ -58,5 +68,9 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         cell.textLabel?.text = self.currentList[indexPath.row].title
         cell.detailTextLabel?.text = self.currentList[indexPath.row].gender
         return cell
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchedTitle = searchBar.text!
     }
 }
