@@ -13,23 +13,20 @@ class APITalker{
     
     static let sharedInstance = APITalker()
     
-    func requestFrom(url: String, successHandler: @escaping (_ successObject: [Movie]?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
+    func requestFrom(url: String, successHandler: @escaping (_ successObject: DecodableSearchResult?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
     
-        
         Alamofire.request(url).responseJSON { response in
-           
-            print (response)
-   
+            //print (response)
+
             switch response.result {
             case .success:
                 do{
                     
-                    
                     let data = response.data
                     
-                    let responseList = try JSONDecoder().decode(DecodableSearchResult.self, from: data!)
+                    let responseData = try JSONDecoder().decode(DecodableSearchResult.self, from: data!)
 
-                    successHandler(responseList.movieList)
+                    successHandler(responseData)
                     
                 } catch let error{
                     

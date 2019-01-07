@@ -46,9 +46,11 @@ struct Movie: Decodable{
 struct DecodableSearchResult: Decodable{
     
     let movieList: [Movie]
+    let totalResults: Int
 
     private enum CodingKeys: String, CodingKey{
         case movieList = "Search"
+        case totalResults = "totalResults"
         
     }
 }

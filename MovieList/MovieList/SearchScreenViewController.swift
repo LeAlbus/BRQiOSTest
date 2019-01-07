@@ -17,13 +17,13 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
     
     let searchViewModel = MovieScreenVM()
     
+    var currentList : [Movie] = []
+    
     var searchedTitle: String = "" {
         didSet{
-            searchViewModel.searchMovies(with: searchedTitle)
+            searchViewModel.searchMovies(with: searchedTitle, firstRequest: true)
         }
     }
-    
-    var currentList : [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +39,21 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
     
     func didReceiveMovieListData(){
         
-        if let newContent: [Movie] = self.searchViewModel.currentList{
+        if self.searchViewModel.currentList.count > 0{
         
-            self.currentList.append(contentsOf: newContent)
+            self.currentList = self.searchViewModel.currentList
             self.resultTableView.reloadData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == currentList.count {
+            searchViewModel.searchMovies(with: searchedTitle)
+        }
+    }
+    
+    func displayErrorMessage(error: String?){
+        print (error ?? "nil")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,8 +85,34 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+       
+        self.searchViewModel.clearList()
+        
         self.searchedTitle = searchBar.text!
         self.searchBar.endEditing(true)
     }
   
+    
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView)
+//    {
+//        let scrollViewHeight = scrollView.frame.size.height;
+//        let scrollContentSizeHeight = scrollView.contentSize.height;
+//        let scrollOffset = scrollView.contentOffset.y;
+//
+//        if ((scrollOffset + scrollViewHeight) - 20 >= scrollContentSizeHeight && !TMDBTalker.sharedInstance.isGettingData)
+//        {
+//            self.loadedPages += 1
+//            TMDBTalker.sharedInstance.requestMovieList(genreID: self.currentGenreID, resultPage: loadedPages) { response in
+//
+//                if let movieList = response?.results{
+//
+//                    self.currentMovies.append(contentsOf: movieList)
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
+//
+//
+//    }
+
 }
