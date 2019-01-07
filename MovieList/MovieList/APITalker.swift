@@ -13,16 +13,17 @@ class APITalker{
     
     static let sharedInstance = APITalker()
     
-    func requestMovieList(with title: String, successHandler: @escaping (_ successObject: [Movie]?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
+    func requestFrom(url: String, successHandler: @escaping (_ successObject: [Movie]?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
     
         
-        Alamofire.request("http://www.omdbapi.com/?apikey=250f96d0&s=Spider").responseJSON { response in
+        Alamofire.request(url).responseJSON { response in
            
             print (response)
    
             switch response.result {
             case .success:
                 do{
+                    
                     
                     let data = response.data
                     

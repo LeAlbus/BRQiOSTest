@@ -33,6 +33,17 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         
         self.searchBar.delegate = self
         
+        self.searchViewModel.delegate = self
+        
+    }
+    
+    func didReceiveMovieListData(){
+        
+        if let newContent: [Movie] = self.searchViewModel.currentList{
+        
+            self.currentList.append(contentsOf: newContent)
+            self.resultTableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,5 +76,7 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchedTitle = searchBar.text!
+        self.searchBar.endEditing(true)
     }
+  
 }
