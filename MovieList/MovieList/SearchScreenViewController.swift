@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import PureLayout
 import UIKit
 
 class SearchScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{

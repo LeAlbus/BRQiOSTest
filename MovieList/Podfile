@@ -9,8 +9,8 @@ target 'MovieList' do
 
   pod 'Alamofire', '~> 4.5'
   pod 'AlamofireImage', '~> 3.3'
-  pod 'PureLayout', '~> 2.0.5'
-
+  pod 'SwiftyJSON', '~> 4.0'
+  
   target 'MovieListTests' do
     inherit! :search_paths
   end

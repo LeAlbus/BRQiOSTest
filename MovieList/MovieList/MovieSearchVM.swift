@@ -37,7 +37,6 @@ class MovieScreenVM{
                     self.currentList.append(contentsOf: newMovies)
                     self.resultPages += 1
                     
-                    
                     if self.currentList.count >= responseData.totalResults{
                         self.allMoviesRetrieved = true
                     }

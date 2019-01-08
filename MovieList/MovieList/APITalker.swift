@@ -8,40 +8,56 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class APITalker{
     
     static let sharedInstance = APITalker()
     
-    func requestFrom(url: String, successHandler: @escaping (_ successObject: DecodableSearchResult?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
+    func requestFrom(url: String, successHandler: @escaping (_ successObject: SearchResult?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
     
         Alamofire.request(url).responseJSON { response in
-            //print (response)
+            if((response.result.value) != nil) {
+                
+                //print (response)
+                
+                let swiftyJsonResponse = JSON(response.result.value!)
+                
+                switch response.result {
+                case .success:
+                    do{
+                        
+                        guard let totalRes = Int(swiftyJsonResponse["totalResults"].stringValue) else {return}
+                        
+                        let results = swiftyJsonResponse["Search"].arrayValue
+                        
+                        var decodedResults: [Movie] = []
+                        
+                        for result in results{
+                            
+                            let newRes = try JSONDecoder().decode(Movie.self, from: result.rawData())
+                            decodedResults.append(newRes)
+                        }
+                        
+                        let searchRes: SearchResult = SearchResult(list: decodedResults, totalRes: totalRes)
 
-            switch response.result {
-            case .success:
-                do{
+                        successHandler(searchRes)
+                        
+                    } catch let error{
+                        
+                        print ("Error while parsing response")
+                        print(error)
+                        
+                        successHandler(nil)
+                        errorHandler(error as NSError)
+                    }
+                case .failure(_):
                     
-                    let data = response.data
-                    
-                    let responseData = try JSONDecoder().decode(DecodableSearchResult.self, from: data!)
-
-                    successHandler(responseData)
-                    
-                } catch let error{
-                    
-                    print ("Error while parsing response")
-                    print(error)
+                    print ("Failed to get movie list from url")
                     
                     successHandler(nil)
-                    errorHandler(error as NSError)
+                    errorHandler(nil)
                 }
-            case .failure(_):
-                
-                print ("Failed to get movie list from url")
-                
-                successHandler(nil)
-                errorHandler(nil)
             }
         }
         
