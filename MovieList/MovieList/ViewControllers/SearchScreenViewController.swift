@@ -13,6 +13,7 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultTableView: UITableView!
+    @IBOutlet weak var initialImageView: UIImageView!
     
     let searchViewModel = MovieScreenVM()
     
@@ -117,10 +118,11 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-       
+        
         self.searchViewModel.clearList()
         
         self.searchedTitle = searchBar.text!
+        self.initialImageView.removeFromSuperview()
         self.searchBar.endEditing(true)
     }
 

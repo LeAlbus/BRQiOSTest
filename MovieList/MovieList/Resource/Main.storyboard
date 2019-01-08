@@ -55,12 +55,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterNull" translatesAutoresizingMaskIntoConstraints="NO" id="CVe-jL-3RN">
+                                <rect key="frame" x="0.0" y="120" width="375" height="603"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="CVe-jL-3RN" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="0OB-GC-6Y4"/>
                             <constraint firstItem="xH4-rb-Xoe" firstAttribute="top" secondItem="vDM-Y5-hO5" secondAttribute="bottom" id="3dz-fY-rrx"/>
+                            <constraint firstItem="CVe-jL-3RN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9bH-12-skZ"/>
                             <constraint firstItem="vDM-Y5-hO5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KHN-4B-cqu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xH4-rb-Xoe" secondAttribute="bottom" id="NXI-wr-vnb"/>
+                            <constraint firstItem="CVe-jL-3RN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Nop-C2-A6B"/>
+                            <constraint firstItem="CVe-jL-3RN" firstAttribute="top" secondItem="vDM-Y5-hO5" secondAttribute="bottom" id="QmD-3J-yrc"/>
                             <constraint firstItem="vDM-Y5-hO5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R9E-TJ-kTF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xH4-rb-Xoe" secondAttribute="trailing" id="W00-rU-doB"/>
                             <constraint firstItem="xH4-rb-Xoe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hll-Nf-5lT"/>
@@ -70,6 +77,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hS6-Fs-SPh"/>
                     <connections>
+                        <outlet property="initialImageView" destination="CVe-jL-3RN" id="FPd-cj-iu6"/>
                         <outlet property="resultTableView" destination="xH4-rb-Xoe" id="3RX-PO-2Ki"/>
                         <outlet property="searchBar" destination="vDM-Y5-hO5" id="JP6-0d-Lb7"/>
                     </connections>
