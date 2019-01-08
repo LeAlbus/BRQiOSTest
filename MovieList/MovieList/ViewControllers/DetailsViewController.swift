@@ -13,6 +13,7 @@ class DetailsViewController: UIViewController{
     
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var blurPosterView: UIVisualEffectView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
@@ -56,20 +57,24 @@ class DetailsViewController: UIViewController{
         self.castLabel.text = "Cast: \(movie.cast)"
         self.releaseLabel.text = movie.released
         
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        self.loading.center = posterImageView.center
         self.blurView.removeFromSuperview()
         UIApplication.shared.endIgnoringInteractionEvents()
         
         self.detailViewModel.getMovieImage(from: movie.posterURL)
     }
     
-    func setPosterImage(_ image: UIImage){
+    func setPosterImage(_ image: UIImage?){
         
-        self.posterImageView.image = image
-    }
-    
-    func posterNotFound(){
-        self.posterImageView.alpha = 0.3
+        if let newImg = image{
+            self.posterImageView.image = newImg
+        }
+        self.loading.stopAnimating()
+        
+        self.blurPosterView.removeFromSuperview()
+        
+
     }
     
     required init?(coder aDecoder: NSCoder) {

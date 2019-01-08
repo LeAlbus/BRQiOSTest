@@ -100,6 +100,14 @@
                                     <constraint firstAttribute="height" constant="268" id="jaA-Yw-jhv"/>
                                 </constraints>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5P-qv-7QT">
+                                <rect key="frame" x="64" y="64" width="247" height="268"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MrU-iR-Y8i">
+                                    <rect key="frame" x="0.0" y="0.0" width="247" height="268"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="A Quiet Place" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu5-6F-RWB">
                                 <rect key="frame" x="8" y="364" width="359" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
@@ -144,6 +152,7 @@
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="YuJ-cz-hPc" secondAttribute="trailing" constant="8" id="1rr-Kb-K0m"/>
                             <constraint firstItem="Ir3-HY-Vz0" firstAttribute="leading" secondItem="LSo-eg-g5t" secondAttribute="leading" constant="8" id="1zX-Ob-uiJ"/>
                             <constraint firstItem="wu5-6F-RWB" firstAttribute="leading" secondItem="LSo-eg-g5t" secondAttribute="leading" constant="8" id="36O-4A-PFA"/>
+                            <constraint firstItem="g5P-qv-7QT" firstAttribute="height" secondItem="MIO-gN-izX" secondAttribute="height" id="3d1-yg-PhO"/>
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="aO9-NG-A4U" secondAttribute="trailing" id="6vr-f1-fpb"/>
                             <constraint firstItem="YuJ-cz-hPc" firstAttribute="leading" secondItem="LSo-eg-g5t" secondAttribute="leading" constant="8" id="8js-e5-O9O"/>
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="bottom" secondItem="0vt-Z3-rcV" secondAttribute="bottom" id="9bl-qi-bhk"/>
@@ -152,6 +161,7 @@
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="0vt-Z3-rcV" secondAttribute="trailing" id="CpR-ef-4m4"/>
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="sNg-YX-jzj" secondAttribute="trailing" constant="8" id="DSU-lz-n2i"/>
                             <constraint firstItem="o0U-DB-vjj" firstAttribute="width" secondItem="CBB-Ij-iDK" secondAttribute="width" id="F47-3o-hJ2"/>
+                            <constraint firstItem="g5P-qv-7QT" firstAttribute="centerY" secondItem="MIO-gN-izX" secondAttribute="centerY" id="Jq7-iG-zud"/>
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="wu5-6F-RWB" secondAttribute="trailing" constant="8" id="NAD-oi-heT"/>
                             <constraint firstItem="o0U-DB-vjj" firstAttribute="centerX" secondItem="LSo-eg-g5t" secondAttribute="centerX" id="Nbf-Lc-235"/>
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="eAk-6v-74D" secondAttribute="trailing" constant="8" id="P9W-uJ-AxM"/>
@@ -161,6 +171,7 @@
                             <constraint firstItem="aO9-NG-A4U" firstAttribute="leading" secondItem="CBB-Ij-iDK" secondAttribute="leading" id="YxK-sJ-SMA"/>
                             <constraint firstItem="MIO-gN-izX" firstAttribute="leading" secondItem="LSo-eg-g5t" secondAttribute="leading" constant="64" id="a2n-Jj-gwh"/>
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="MIO-gN-izX" secondAttribute="trailing" constant="64" id="ct3-qM-G8z"/>
+                            <constraint firstItem="g5P-qv-7QT" firstAttribute="width" secondItem="MIO-gN-izX" secondAttribute="width" id="dIQ-4w-hUF"/>
                             <constraint firstItem="aO9-NG-A4U" firstAttribute="bottom" secondItem="MIO-gN-izX" secondAttribute="bottom" id="e16-v2-FvE"/>
                             <constraint firstItem="eAk-6v-74D" firstAttribute="top" secondItem="sNg-YX-jzj" secondAttribute="bottom" constant="16" id="ecD-jc-fnG"/>
                             <constraint firstItem="0vt-Z3-rcV" firstAttribute="leading" secondItem="LSo-eg-g5t" secondAttribute="leading" id="fZa-bw-7Ho"/>
@@ -168,6 +179,7 @@
                             <constraint firstItem="LSo-eg-g5t" firstAttribute="trailing" secondItem="Ir3-HY-Vz0" secondAttribute="trailing" constant="8" id="gXE-zL-gVE"/>
                             <constraint firstItem="Ir3-HY-Vz0" firstAttribute="top" secondItem="YuJ-cz-hPc" secondAttribute="bottom" constant="8" id="m9B-en-OMo"/>
                             <constraint firstItem="YuJ-cz-hPc" firstAttribute="top" secondItem="wu5-6F-RWB" secondAttribute="bottom" constant="16" id="qzK-PS-0Dh"/>
+                            <constraint firstItem="g5P-qv-7QT" firstAttribute="centerX" secondItem="MIO-gN-izX" secondAttribute="centerX" id="tlC-Yt-8rY"/>
                             <constraint firstItem="MIO-gN-izX" firstAttribute="top" secondItem="LSo-eg-g5t" secondAttribute="top" id="vck-rN-zuk"/>
                             <constraint firstItem="sNg-YX-jzj" firstAttribute="leading" secondItem="LSo-eg-g5t" secondAttribute="leading" constant="8" id="weJ-Kx-YzM"/>
                             <constraint firstItem="o0U-DB-vjj" firstAttribute="centerY" secondItem="LSo-eg-g5t" secondAttribute="centerY" id="wxV-tp-18t"/>
@@ -176,6 +188,7 @@
                         <viewLayoutGuide key="safeArea" id="LSo-eg-g5t"/>
                     </view>
                     <connections>
+                        <outlet property="blurPosterView" destination="g5P-qv-7QT" id="bLM-wU-WFc"/>
                         <outlet property="blurView" destination="o0U-DB-vjj" id="qwA-iH-B0C"/>
                         <outlet property="castLabel" destination="eAk-6v-74D" id="nsT-iQ-b5o"/>
                         <outlet property="directionLabel" destination="sNg-YX-jzj" id="mGL-UL-puG"/>

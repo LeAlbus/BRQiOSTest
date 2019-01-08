@@ -53,7 +53,7 @@ class MovieDetailsVM{
                     self.delegate?.setPosterImage(poster)
                     
                 } else {
-                    self.delegate?.posterNotFound()
+                    self.delegate?.setPosterImage(nil)
                 }
             })
         }
