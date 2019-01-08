@@ -32,6 +32,7 @@ class MovieDetailsVM{
              } else {
                 
                 self.delegate?.displayErrorMessage(error: nil)
+                
             }
             
         }, errorHandler: { (error) in

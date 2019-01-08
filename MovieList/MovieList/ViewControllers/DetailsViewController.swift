@@ -32,6 +32,21 @@ class DetailsViewController: UIViewController{
     
     func displayErrorMessage(error: String?){
         print (error ?? "nil")
+        
+        print (error ?? "Undefined error")
+        
+        let alert = UIAlertController(title: "Oops", message: error ?? "Something went wrong, please try again later", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                _ = self.navigationController?.popViewController(animated: true)
+            }))
+        
+        if UIApplication.shared.isIgnoringInteractionEvents{
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
     }
     
     override func viewDidLoad() {
