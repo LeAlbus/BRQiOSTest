@@ -59,6 +59,17 @@ class DetailsViewController: UIViewController{
         self.loading.stopAnimating()
         self.blurView.removeFromSuperview()
         UIApplication.shared.endIgnoringInteractionEvents()
+        
+        self.detailViewModel.getMovieImage(from: movie.posterURL)
+    }
+    
+    func setPosterImage(_ image: UIImage){
+        
+        self.posterImageView.image = image
+    }
+    
+    func posterNotFound(){
+        self.posterImageView.alpha = 0.3
     }
     
     required init?(coder aDecoder: NSCoder) {

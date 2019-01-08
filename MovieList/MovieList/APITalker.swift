@@ -100,5 +100,28 @@ class APITalker{
         }
         
     }
+    
+    func retrievePoster(from url: String, successHandler: @escaping (UIImage?) -> Void) -> Request {
+        
+        return Alamofire.request(url, method: .get).responseImage { response in
+            
+            if response != nil{
+                
+                
+                switch response.result {
+                    case .success:
+                        guard let image = response.result.value else { return }
+                        successHandler(image)
+                    
+                    case .failure(_):
+                        successHandler(nil)
+                }
+
+            } else {
+                successHandler(nil)
+            }
+           
+        }
+    }
 
 }

@@ -36,5 +36,17 @@ class MovieDetailsVM{
         })
     }
     
-
+    func getMovieImage(from url: String){
+        
+        APITalker.sharedInstance.retrievePoster(from: url, successHandler: { (image) in
+            
+            if let poster = image{
+                
+                self.delegate?.setPosterImage(poster)
+                
+            } else {
+                self.delegate?.posterNotFound()
+            }
+        })
+    }
 }
