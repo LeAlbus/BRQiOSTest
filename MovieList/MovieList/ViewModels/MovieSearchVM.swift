@@ -23,6 +23,12 @@ class MovieScreenVM{
         self.currentList.removeAll()
         self.resultPages = 1
         self.allMoviesRetrieved = false
+        self.currentlyRequesting = false
+    }
+    
+    func getMovieID(in position: Int) -> String{
+        
+        return currentList[position].ID
     }
     
     func searchMovies(with title: String, firstRequest: Bool = false){

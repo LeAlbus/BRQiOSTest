@@ -19,7 +19,7 @@ class APITalker{
         Alamofire.request(url).responseJSON { response in
             if((response.result.value) != nil) {
                 
-                //print (response)
+                print (response)
                 
                 let swiftyJsonResponse = JSON(response.result.value!)
                 
@@ -59,6 +59,44 @@ class APITalker{
                     errorHandler(nil)
                 }
             }
+        }
+        
+    }
+    
+    
+    func requestMovieData(from url: String, successHandler: @escaping (_ successObject: MovieDetails?) -> (), errorHandler: @escaping (_ error: NSError?) -> ()){
+        
+        Alamofire.request(url).responseJSON { response in
+            if((response.result.value) != nil) {
+                
+                print (response)
+            
+                switch response.result {
+                case .success:
+                    do{
+                        
+                        let movieDataDecoded: MovieDetails = try JSONDecoder().decode(MovieDetails.self, from: response.data!)
+                        
+                        successHandler(movieDataDecoded)
+                        
+                    } catch let error{
+                        
+                        print ("Error while parsing response")
+                        print(error)
+                        
+                        successHandler(nil)
+                        errorHandler(error as NSError)
+                    }
+                case .failure(_):
+                    
+                    print ("Failed to get movie data from url")
+                    
+                    successHandler(nil)
+                    errorHandler(nil)
+                }
+                
+            }
+            
         }
         
     }

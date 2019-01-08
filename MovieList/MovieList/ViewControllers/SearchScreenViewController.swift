@@ -24,6 +24,18 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue")
+        
+        if let indexPath = resultTableView.indexPathForSelectedRow{
+            let selectedRow = indexPath.row
+            let newID = self.searchViewModel.getMovieID(in: selectedRow)
+ 
+            let detailVC = segue.destination as! DetailsViewController
+            detailVC.movieID(id: newID)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,28 +102,5 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         self.searchedTitle = searchBar.text!
         self.searchBar.endEditing(true)
     }
-  
-    
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView)
-//    {
-//        let scrollViewHeight = scrollView.frame.size.height;
-//        let scrollContentSizeHeight = scrollView.contentSize.height;
-//        let scrollOffset = scrollView.contentOffset.y;
-//
-//        if ((scrollOffset + scrollViewHeight) - 20 >= scrollContentSizeHeight && !TMDBTalker.sharedInstance.isGettingData)
-//        {
-//            self.loadedPages += 1
-//            TMDBTalker.sharedInstance.requestMovieList(genreID: self.currentGenreID, resultPage: loadedPages) { response in
-//
-//                if let movieList = response?.results{
-//
-//                    self.currentMovies.append(contentsOf: movieList)
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
-//
-//
-//    }
 
 }
