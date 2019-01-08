@@ -30,9 +30,14 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         if let indexPath = resultTableView.indexPathForSelectedRow{
             let selectedRow = indexPath.row
             let newID = self.searchViewModel.getMovieID(in: selectedRow)
- 
-            let detailVC = segue.destination as! DetailsViewController
-            detailVC.movieID(id: newID)
+            
+            if newID != ""{
+                let detailVC = segue.destination as! DetailsViewController
+                detailVC.movieID(id: newID)
+            } else {
+                self.displayErrorMessage(error: nil)
+                
+            }
         }
     }
     
