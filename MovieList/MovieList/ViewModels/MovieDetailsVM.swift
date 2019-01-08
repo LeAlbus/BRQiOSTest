@@ -18,6 +18,9 @@ class MovieDetailsVM{
     var movieData: MovieDetails?
     var movieID: String = ""
     
+    let cacheImage = AutoPurgingImageCache(memoryCapacity: (100*1024*1024), preferredMemoryUsageAfterPurge: (75*1024*1024))
+    
+    
     func searchMovie(){
         APITalker.sharedInstance.requestMovieData(from: "http://www.omdbapi.com/?apikey=250f96d0&i=\(movieID)", successHandler: { (response) in
         
@@ -38,15 +41,30 @@ class MovieDetailsVM{
     
     func getMovieImage(from url: String){
         
-        APITalker.sharedInstance.retrievePoster(from: url, successHandler: { (image) in
-            
-            if let poster = image{
+        if let poster = self.cachedImage(for: url) {
+            self.delegate?.setPosterImage(poster)
+        } else {
+        
+            APITalker.sharedInstance.retrievePoster(from: url, successHandler: { (image) in
                 
-                self.delegate?.setPosterImage(poster)
-                
-            } else {
-                self.delegate?.posterNotFound()
-            }
-        })
+                if let poster = image{
+                    
+                    self.cache(poster, for: url)
+                    self.delegate?.setPosterImage(poster)
+                    
+                } else {
+                    self.delegate?.posterNotFound()
+                }
+            })
+        }
     }
+    
+    func cache(_ image: Image, for url: String) {
+        cacheImage.add(image, withIdentifier: url)
+    }
+    
+    func cachedImage(for url: String) -> Image? {
+        return cacheImage.image(withIdentifier: url)
+    }
+    
 }
