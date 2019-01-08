@@ -28,7 +28,7 @@ class MovieScreenVM{
     
     func getMovieID(in position: Int) -> String{
         
-        if !self.currentList.isEmpty{
+        if self.allowShowDetails(){
             if position < currentList.count-1 {
                 return currentList[position].ID
             }
@@ -36,6 +36,11 @@ class MovieScreenVM{
             return currentList.last!.ID
         }
         return ""
+    }
+    
+    func allowShowDetails() -> Bool{
+        if self.currentList.isEmpty{return false}
+        return true
     }
     
     func searchMovies(with title: String, firstRequest: Bool = false){

@@ -34,12 +34,21 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
             if newID != ""{
                 let detailVC = segue.destination as! DetailsViewController
                 detailVC.movieID(id: newID)
-            } else {
-                self.displayErrorMessage(error: nil)
-                
             }
         }
     }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if self.searchViewModel.allowShowDetails(){
+            return super.shouldPerformSegue(withIdentifier:identifier, sender:sender)
+        }
+        
+        self.displayErrorMessage(error: "No movies found on movie list")
+        
+        return false
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +78,14 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func displayErrorMessage(error: String?){
-        print (error ?? "nil")
+        
+        print (error ?? "Undefined error")
+        
+        let alert = UIAlertController(title: "Oops", message: error ?? "Something went wrong, please try again later", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in }))
+        
+        self.present(alert, animated: true, completion: nil)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
