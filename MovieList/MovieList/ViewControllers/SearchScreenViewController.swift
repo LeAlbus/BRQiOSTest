@@ -122,7 +122,10 @@ class SearchScreenViewController: UIViewController, UITableViewDataSource, UITab
         self.searchViewModel.clearList()
         
         self.searchedTitle = searchBar.text!
-        self.initialImageView.removeFromSuperview()
+        
+        if self.initialImageView != nil {
+            self.initialImageView.removeFromSuperview()
+        }
         self.searchBar.endEditing(true)
     }
 
